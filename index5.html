@@ -11,14 +11,15 @@
       padding: 40px;
       max-width: 900px;
       margin: auto;
-      background-color: #f9f9f9;
+      background: #f9f9f9;
       color: #222;
     }
 
+    /* NAVBAR */
     nav {
       position: sticky;
       top: 0;
-      background-color: #fff;
+      background: #fff;
       padding: 10px 20px;
       display: flex;
       align-items: center;
@@ -26,27 +27,25 @@
       border-bottom: 1px solid #ccc;
       z-index: 1000;
     }
-
     .nav-left a.jailbreak-button {
-      background-color: #3366cc;
+      background: #3366cc;
       color: #fff;
       padding: 8px 16px;
       border-radius: 6px;
       text-decoration: none;
       font-weight: bold;
     }
-
     .nav-center {
       display: flex;
       gap: 20px;
     }
-
     .nav-center a {
       text-decoration: none;
       font-weight: bold;
       color: #222;
     }
 
+    /* HAMBURGER */
     .dropdown-toggle {
       display: none;
       background: none;
@@ -54,65 +53,47 @@
       font-size: 30px;
       cursor: pointer;
       color: #3366cc;
-      padding: 0;
-      margin: 0;
-      line-height: 1;
     }
 
+    /* DROPDOWN (default hidden) */
     .dropdown-menu {
       display: none;
       flex-direction: column;
-      background-color: #fff;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      border-top: 1px solid #ccc; /* desktop fallback */
-      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      background: #fff;
+      border-left: 1px solid #ccc;
+      border-right: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
       z-index: 999;
     }
-
     .dropdown-menu-header {
       padding: 10px 20px;
       font-weight: bold;
       color: #666;
       user-select: none;
     }
-
     .dropdown-menu a {
       padding: 10px 20px;
       text-decoration: none;
       color: #222;
       font-weight: bold;
     }
-
     .dropdown-menu a:hover {
-      background-color: #f2f2f2;
+      background: #f2f2f2;
     }
 
+    /* MOBILE ONLY */
     @media (max-width: 600px) {
-      .nav-center {
-        display: none;
-      }
-      .dropdown-toggle {
-        display: inline-block;
-      }
-      .dropdown-menu {
-        position: static;
-        box-shadow: none;
-        display: none;
-        /* remove the top border, keep left/right/bottom */
-        border-top: none;
-        border-left: 1px solid #ccc;
-        border-right: 1px solid #ccc;
-        border-bottom: 1px solid #ccc;
-      }
+      .nav-center { display: none; }
+      .dropdown-toggle { display: block; }
+
       .dropdown-menu.show {
         display: flex;
+        position: sticky;
+        /* `top` set by JS to exactly match nav height */
       }
     }
 
-    /* Typography & Content */
+    /* CONTENT STYLES */
     h1, h2, h3 { color: #111; }
     h1 { font-size: 2.5em; margin-bottom: 0.5em; }
     h2 { margin-top: 2em; border-bottom: 2px solid #ccc; padding-bottom: 0.3em; }
@@ -120,10 +101,10 @@
     ul { padding-left: 1.2em; }
     table { width: 100%; border-collapse: collapse; margin: 1em 0; }
     th, td { border: 1px solid #ddd; padding: 8px; }
-    th { background-color: #f2f2f2; text-align: left; }
+    th { background: #f2f2f2; }
     a { color: #3366cc; text-decoration: none; }
     a:hover { text-decoration: underline; }
-    code { background-color: #eee; padding: 2px 4px; border-radius: 4px; }
+    code { background: #eee; padding: 2px 4px; border-radius: 4px; }
     .footer-message {
       margin-top: 60px;
       font-size: 0.9em;
@@ -134,11 +115,13 @@
 </head>
 <body>
 
-  <nav>
+  <nav id="mainNav">
     <div class="nav-left">
       <a href="javascript:location.reload();" class="jailbreak-button">JailbreakItNow!</a>
     </div>
+
     <button class="dropdown-toggle" onclick="toggleDropdown()">☰</button>
+
     <div class="nav-center">
       <a href="#apple">Apple</a>
       <a href="#android">Android</a>
@@ -148,6 +131,7 @@
     </div>
   </nav>
 
+  <!-- DROPDOWN OUTSIDE NAV, touches the nav's bottom border -->
   <div class="dropdown-menu" id="dropdownMenu">
     <div class="dropdown-menu-header">Select device brand:</div>
     <a href="#apple">Apple</a>
@@ -255,6 +239,7 @@
   <h2>🧬 Conclusion</h2>
   <p>Jailbreaking is about freedom, creativity, and experimentation. As long as you know what you’re doing and respect the developers and creators behind the devices and games you love, jailbreaking can be a fun and rewarding hobby.</p>
 
+
   <div class="footer-message">
     Support the movement <a href="https://stopkillinggames.com" target="_blank">Stop Killing Games</a><br />
     “If buying isn’t owning, then piracy isn’t stealing”
@@ -263,16 +248,32 @@
   <script>
     function toggleDropdown() {
       const menu = document.getElementById("dropdownMenu");
+      const nav  = document.getElementById("mainNav");
+
+      if (window.innerWidth > 600) return;
+
       menu.classList.toggle("show");
+
+      if (menu.classList.contains("show")) {
+        // measure nav height and set as inline top
+        const navHeight = nav.getBoundingClientRect().height;
+        menu.style.top = navHeight + "px";
+      } else {
+        // reset
+        menu.style.top = "";
+      }
     }
-    document.addEventListener("click", function(e) {
+
+    // clicking outside closes & resets
+    document.addEventListener("click", e => {
       const menu = document.getElementById("dropdownMenu");
       const btn  = document.querySelector(".dropdown-toggle");
-      if (!menu.contains(e.target) && !btn.contains(e.target)) {
+      if (menu.classList.contains("show") &&
+          !menu.contains(e.target) && !btn.contains(e.target)) {
         menu.classList.remove("show");
+        menu.style.top = "";
       }
     });
   </script>
-
 </body>
 </html>
