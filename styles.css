@@ -1,0 +1,389 @@
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  padding: 40px;
+  max-width: 900px;
+  margin: auto;
+  background: #f9f9f9;
+  color: #222;
+}
+
+/* NAVBAR */
+nav {
+  position: sticky;
+  top: 0;
+  background: transparent;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+/*
+.nav-left a.jailbreak-button {
+  background: #3366cc;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+*/
+.nav-center {
+  display: flex;
+  gap: 20px;
+}
+.nav-center a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* HAMBURGER */
+.dropdown-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  color: rgba(123, 0, 255, 0.871);
+}
+
+/* DROPDOWN (default hidden) */
+.dropdown-menu {
+  display: none;
+  flex-direction: column;
+  background: #fff;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  z-index: 999;
+}
+.dropdown-menu-header {
+  padding: 10px 20px;
+  font-weight: bold;
+  color: #666;
+  user-select: none;
+}
+.dropdown-menu a {
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #222;
+  font-weight: bold;
+}
+.dropdown-menu a:hover {
+  background: #f2f2f2;
+}
+
+/* MOBILE ONLY */
+@media (max-width: 600px) {
+  .nav-center { display: none; }
+  .dropdown-toggle { display: block; }
+
+  .dropdown-menu.show {
+    display: flex;
+    position: sticky;
+  }
+}
+
+/* CONTENT STYLES */
+h1, h2, h3 { color: #fff; }
+h3 { margin-top: 1.5em; }
+/* Align SVG and text in h2 horizontally */
+h1 {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.shared-nav-ps-logo {
+  flex-shrink: 0;
+}
+
+ul { padding-left: 1.2em; }
+table { width: 100%; border-collapse: collapse; margin: 1em 0; }
+th, td { border: 1px solid #ddd; padding: 8px; }
+th { background: #f2f2f2; }
+a { color: #3366cc; text-decoration: none; }
+a:hover { text-decoration: none; }
+code { background: #eee; padding: 2px 4px; border-radius: 4px; }
+.footer-message {
+  margin-top: 60px;
+  font-size: 0.9em;
+  color: #eee;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.nbsp {
+  background-color: transparent;
+  border: none;
+  color: transparent;
+}
+
+.nbsp:hover {
+  background-color: transparent;
+  border: none;
+  color: transparent;
+}
+
+/* ICONS */
+
+.bi-discord {
+  transition: 0.2s;
+  color: #eee;
+}
+
+.bi-discord:hover {
+  color: #5865F2;
+  transition: 0.2s;
+}
+
+.bi-twitter-x {
+  transition: 0.2s;
+  color: #eee;
+}
+
+.bi-twitter-x:hover {
+  color: #B7C3CE; /* #1DA1F2 */
+  transition: 0.2s;
+}
+
+.ps-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 5px;
+  margin-top: 15px;
+  table-layout: fixed;
+}
+
+.ps-item {
+  text-align: center;
+  padding: 0; /* remove padding here so link takes full space */
+  width: 50%;
+}
+
+
+.ps-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 180px; /* Fixed height for all boxes */
+  padding: 15px;
+  /* border: 2px solid #ccc; */
+  background: transparent;
+  color: inherit;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.ps-image-slot {
+  width: 150px;
+  height: 100px;
+  background-color: transparent; /* #eee */
+  margin: 0 auto 8px;
+}
+
+.ps-name {
+  font-weight: bold;
+}
+
+.ps-info {
+  font-size: 0.85em;
+  color: #666;
+  text-align: center;
+  margin-top: 5px;
+  line-height: 1.3;
+  white-space: normal; /* allow wrapping if needed */
+}
+
+@media (max-width: 600px) {
+  /* make the table rows/cells stack so margins work */
+  .ps-table {
+    border-collapse: separate;
+    border-spacing: 0; /* spacing handled by margins now */
+    width: 100%;
+  }
+
+  .ps-table tr {
+    display: block;
+    margin: 0;
+    padding: 0;
+  }
+
+  .ps-item {
+    display: block;        /* make each "cell" a block */
+    width: 100%;
+    padding: 0;            /* link handles the visual padding */
+    margin: 0 0 15px 0;    /* <- 15px gap below each selectable box */
+  }
+  
+
+    .glass{
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 20px;
+        border:1px solid rgba(255, 255, 255, 0.18);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        padding-left: 35px;
+        padding-right: 35px;
+    }
+}
+
+/* --- unavailable slots --- */
+
+.unavailable {
+  opacity: 0.5; /* visually indicate unavailable items */
+}
+.unavailable .ps-link {
+  pointer-events: none; /* disable interaction */
+  cursor: not-allowed; /* change cursor to indicate unavailability */
+}
+.unavailable .ps-image-slot {
+  background-color: transparent; /* lighter color for unavailable items */
+}
+.unavailable .ps-info {
+  color: #eee; /* dimmed text for unavailable items */
+}
+.unavailable .ps-name {
+  color: #eee; /* dimmed name for unavailable items */
+}
+
+.unavailable:hover {
+  cursor: not-allowed;
+  background-color: transparent;
+}
+
+.ps-item {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 20px;
+        border:1px solid rgba(255, 255, 255, 0.18);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.ps-image-slot img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* maintain aspect ratio */
+  display: block;
+  margin: 0 auto; /* center the image */
+}
+
+
+    body {
+        background-image: url("wallpaper.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
+    .container {
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+    }
+
+    .glass{
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 20px;
+        border:1px solid rgba(255, 255, 255, 0.18);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    padding-left: 35px;
+    padding-right: 35px;
+    }
+
+    .ps-item:hover {
+        background: linear-gradient(135deg, rgba(123, 0, 255, 0.218), rgb(123, 0, 255, 0.218));
+    }
+
+/* Make custom colors animatable */
+@property --g1 {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: transparent;
+}
+@property --g2 {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: transparent;
+}
+
+.jailbreak-button {
+  --g1: transparent; /* default transparent start */
+  --g2: transparent; /* default transparent end */
+
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 20px;
+  background: linear-gradient(135deg, var(--g1), var(--g2));
+  transition: --g1 0.3s ease-in-out, --g2 0.3s ease-in-out;
+  display: inline-block;
+}
+
+.jailbreak-button:hover {
+  --g1: rgba(123, 0, 255, 0.218);
+  --g2: rgba(123, 0, 255, 0.218);
+}
+
+.ps-item {
+  --g1: transparent; /* default transparent start */
+  --g2: transparent; /* default transparent end */
+  background: linear-gradient(135deg, var(--g1), var(--g2));
+  transition: --g1 0.3s ease-in-out, --g2 0.3s ease-in-out;
+}
+
+.ps-item:hover {
+  --g1: rgba(123, 0, 255, 0.218);
+  --g2: rgba(123, 0, 255, 0.218);
+}
+
+
+
+
+      
+
+    .ps-item {
+      transition: transform 0.3s;
+    }
+
+    .ps-table {
+      transition: transform 0.3s;
+    }
+
+
+
+
+
+    /* When a non-unavailable item is hovered, scale down all other items including unavailable */
+    .ps-table:has(.ps-item:not(.unavailable):hover) .ps-item:not(:hover) {
+      transform: scale(0.97);
+      transition: transform 0.3s;
+    }
+
+    /* Scale up non-unavailable items on hover */
+    .ps-table .ps-item:not(.unavailable):hover {
+      transform: scale(1.01);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+      z-index: 1;
+      transition: transform 0.3s;
+    }
+
+    /* Unavailable items never scale on their own hover */
+    .ps-table .ps-item.unavailable:hover {
+      transform: none !important;
+      z-index: auto !important;
+      transition: transform 0.3s;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    }
