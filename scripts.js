@@ -30,9 +30,9 @@ document.addEventListener("click", e => {
       const body = document.body;
 
       if (smallScreen.matches) {
-        body.style.backgroundImage = "url('mobile-wallpaper.jpg')";
-      } else {
         body.style.backgroundImage = "url('wallpaper.jpg')";
+      } else {
+        body.style.backgroundImage = "url('mobile-wallpaper.jpg')";
       }
     }
 
