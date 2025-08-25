@@ -89,6 +89,13 @@ nav {
   }
 }
 
+@media (max-width: 600px) {
+    body {
+        background-color: #1d1d1d;
+        background-image: url("mobile-wallpaper.jpg");
+    }
+}
+
 /* CONTENT STYLES */
 h1, h2, h3 { color: #fff; }
 h3 { margin-top: 1.5em; }
