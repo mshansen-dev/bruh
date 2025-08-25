@@ -23,3 +23,21 @@ document.addEventListener("click", e => {
         menu.style.top = "";
     }
 });
+
+
+    function setBackground() {
+      const smallScreen = window.matchMedia("(max-width: 600px)");
+      const body = document.body;
+
+      if (smallScreen.matches) {
+        body.style.backgroundImage = "url('mobile-wallpaper.jpg')";
+      } else {
+        body.style.backgroundImage = "url('wallpaper.jpg')";
+      }
+    }
+
+    // Run on load
+    setBackground();
+
+    // Run whenever the screen size changes
+    window.addEventListener("resize", setBackground);
